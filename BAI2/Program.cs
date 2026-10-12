@@ -8,28 +8,31 @@ namespace BAI
     {
         public static bool Vooruit(uint b)
         {
-            // *** IMPLEMENTATION HERE *** //
-            return false;
+            
+            return (b & 128) != 0;++
         }
         public static uint Vermogen(uint b)
         {
-            // *** IMPLEMENTATION HERE *** //
-            return 0;
+            uint waarde = (b >> 5) & 3;   // 0, 1, 2 of 3
+            switch (waarde)
+            {
+                case 0: return 0;
+                case 1: return 33;
+                case 2: return 67;
+                default: return 100;
+            }
         }
         public static bool Wagon(uint b)
         {
-            // *** IMPLEMENTATION HERE *** //
-            return false;
+            return (b & 16) != 0;
         }
         public static bool Licht(uint b)
         {
-            // *** IMPLEMENTATION HERE *** //
-            return false;
+            return (b & 8) != 0;
         }
         public static uint ID(uint b)
-        {
-            // *** IMPLEMENTATION HERE *** //
-            return 0;
+        { 
+            return => b & 7;
         }
 
         public static HashSet<uint> Alle(List<uint> inputStroom)
