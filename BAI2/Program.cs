@@ -8,12 +8,11 @@ namespace BAI
     {
         public static bool Vooruit(uint b)
         {
-            
-            return (b & 128) != 0;++
+            return (b & 128) != 0;
         }
         public static uint Vermogen(uint b)
         {
-            uint waarde = (b >> 5) & 3;   // 0, 1, 2 of 3
+            uint waarde = (b >> 5) & 3;   
             switch (waarde)
             {
                 case 0: return 0;
@@ -32,31 +31,57 @@ namespace BAI
         }
         public static uint ID(uint b)
         { 
-            return => b & 7;
+            return  b & 7;
         }
 
         public static HashSet<uint> Alle(List<uint> inputStroom)
         {
             HashSet<uint> set = new HashSet<uint>();
             // *** IMPLEMENTATION HERE *** //
+            foreach (uint b in inputStroom)
+            {
+                set.Add(b);
+            }
             return set;
         }
         public static HashSet<uint> ZonderLicht(List<uint> inputStroom)
         {
             HashSet<uint> set = new HashSet<uint>();
             // *** IMPLEMENTATION HERE *** //
+            foreach (uint u in inputStroom)
+            {
+                if (!Licht(u))
+                {
+                    set.Add(u);
+                }
+            }
             return set;
         }
         public static HashSet<uint> MetWagon(List<uint> inputStroom)
         {
             HashSet<uint> set = new HashSet<uint>();
             // *** IMPLEMENTATION HERE *** //
+            foreach (uint u in inputStroom)
+            {
+                if (Wagon(u))
+                {
+                    set.Add(u);
+                }
+            }
             return set;
         }
         public static HashSet<uint> SelecteerID(List<uint> inputStroom, uint lower, uint upper)
         {
             HashSet<uint> set = new HashSet<uint>();
             // *** IMPLEMENTATION HERE *** //
+            foreach (var b in inputStroom)
+            {
+                uint id = ID(b);
+                if (id >= lower && id <= upper)
+                {
+                    set.Add(b);
+                }
+            }
             return set;
         }
 
