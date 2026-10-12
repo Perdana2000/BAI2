@@ -8,10 +8,13 @@ namespace BAI
     {
         public static bool Vooruit(uint b)
         {
+            // voor de opdrachten die bij 1 behoren moeten we kijken naar de informatie op een specifiek bit, dit doe je door te kijken welk getal je kan gebruiken als masker.
+            
             return (b & 128) != 0;
         }
         public static uint Vermogen(uint b)
         {
+            // Gebruik gemaakt van de >> operator, om bij de juiste bitjes te komen. Vervolgens een switch case gebruikt om respectievelijk het vermogen terug te geven.
             uint waarde = (b >> 5) & 3;   
             switch (waarde)
             {
@@ -38,6 +41,7 @@ namespace BAI
         {
             HashSet<uint> set = new HashSet<uint>();
             // *** IMPLEMENTATION HERE *** //
+            // Bij opdracht 2 lopen we door de input stroom met een loop, waarin we flowcontroll toe passen om de juiste resultaten terug te geven.
             foreach (uint b in inputStroom)
             {
                 set.Add(b);
@@ -89,6 +93,10 @@ namespace BAI
         {
             HashSet<uint> set = new HashSet<uint>();
             // *** IMPLEMENTATION HERE *** //
+            
+            set = SelecteerID(inputStroom, 0, 2); // Lager dan 3.
+            set.IntersectWith(ZonderLicht(inputStroom)); // Zonder licht.
+            
             return set;
         }
 
@@ -96,6 +104,10 @@ namespace BAI
         {
             HashSet<uint> set = new HashSet<uint>();
             // *** IMPLEMENTATION HERE *** //
+            
+            set = Alle(inputStroom); // Alles
+            set.ExceptWith(Opdr3a(inputStroom));// lager dan 3 en zonder licht.
+            
             return set;
         }
 
